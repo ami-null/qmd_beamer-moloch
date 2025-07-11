@@ -1,0 +1,11 @@
+*
+!.gitattributes
+!.gitignore
+!LICENSE
+!qmd_beamer-metropolis_main.pdf
+!qmd_beamer-metropolis_main.qmd
+!qmd_beamer-metropolis_after-body.tex
+!qmd_beamer-metropolis_header.tex
+!qmd_beamer-metropolis_metainfo.tex
+!README.md
+!refdb.bib
