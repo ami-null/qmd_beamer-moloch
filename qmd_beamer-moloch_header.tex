@@ -1,0 +1,100 @@
+\usetheme{moloch}
+\molochset{block=fill}
+
+% \usefonttheme{professionalfonts}
+% \usepackage{inter}
+\usepackage{fontspec}
+\setsansfont[
+    UprightFont = Inter-Light,          % Use light as the normal font weight
+    BoldFont = Inter-SemiBold,           % Use semibold for \textbf
+    ItalicFont = Inter-LightItalic,      % Light italic for \textit
+    BoldItalicFont = Inter-SemiBoldItalic % Semibold italic for \textbf with \textit
+]{Inter}[RawFeature={+ss01, +ss04, +ss03, +dlig, +tnum}]
+% Inter font stylistic sets:
+% ss01: alternate digits for 3, 4, 6, 8
+% ss02: for disambiguation (with zero) in places like "Ill" or "O0" etc
+% ss04: for disambiguation (without zero) in places like "Ill" etc
+% ss03: round comma, quation marks
+
+
+\addtocounter{framenumber}{-2}    % this is done so that the titlepage and the table of contents are not counted
+
+\usepackage[]{natbib}
+
+\definecolor{airforceblue}{rgb}{0.36, 0.54, 0.66}
+\let\oldcite=\cite
+\renewcommand{\cite}[1]{\textcolor{airforceblue!110}{\oldcite{#1}}}
+\let\oldcitet=\citet
+\renewcommand{\citet}[1]{\textcolor{airforceblue!110}{\oldcitet{#1}}}
+\let\oldcitep=\citep
+\renewcommand{\citep}[1]{\textcolor{airforceblue!110}{\oldcitep{#1}}}
+
+\usepackage{appendixnumberbeamer}
+\usepackage[font=scriptsize]{caption}
+\usepackage{booktabs, longtable, colortbl, array}
+
+% \AtBeginSection{
+	% \ifbibliography
+	
+	% \else
+		% {
+			% \begin{frame}[noframenumbering, plain]
+				% \vfill
+				% \centering
+				% \begin{beamercolorbox}[sep=12pt,center,shadow=false,rounded=false]{section title}
+					% \usebeamerfont{section title}\insertsectionhead\par%
+				% \end{beamercolorbox}
+				% \vfill
+			% \end{frame}
+		% }
+	% \fi
+% }
+
+\AtBeginSection{
+	\ifbibliography
+		% do nothing
+	\else
+		{
+			\begin{frame}[noframenumbering, plain]
+				\sectionpage
+			\end{frame}
+		}
+	\fi
+}
+
+
+% \AtBeginSubsection[]{
+%     {
+%         \begin{frame}[noframenumbering, plain]
+%             \subsectionpage
+%         \end{frame}
+%     }
+% }
+
+
+\AtBeginPart{
+  % \frame{\partpage}
+}
+
+
+\setbeamercolor{page number in head/foot}{fg=gray}
+% \setbeamertemplate{page number in head/foot}[appendixframenumber]
+\setbeamertemplate{footline}[frame number]
+
+\setbeamertemplate{itemize items}[circle]
+\setbeamertemplate{enumerate items}[circle]
+\setbeamertemplate{sections/subsections in toc}[circle]
+
+\setbeamertemplate{frametitle continuation}[from second][(cont.)]
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}{: }
+\setbeamercovered{transparent}
+
+\newcommand\Wider[2][4em]{%
+	\makebox[\linewidth][c]{%
+		\begin{minipage}{\dimexpr\textwidth+#1\relax}
+			% \raggedright#2
+			\centering#2
+		\end{minipage}%
+	}%
+}

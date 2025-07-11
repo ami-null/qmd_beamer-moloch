@@ -1,0 +1,103 @@
+---
+# title: ""
+# not providing title here in order to turn off the default title page
+# because, I want the titlepage to be "plain" (no frame number in footer)
+
+# author: ""
+# not providing author here because I want to provide a short author name as well
+
+# date: ""
+
+# TITLE, AUTHOR AND DATE SHOULD BE PUT INTO metainfo.tex
+format: 
+    beamer:
+        keep-tex: false
+        cite-method: natbib
+        include-in-header:
+            - file: qmd_beamer-moloch_metainfo.tex    # for title, author, date etc
+            - file: qmd_beamer-moloch_header.tex    # main configs
+        # include-after-body:
+        #     - file: qmd_beamer-metropolis_after-body.tex    # for "thank you" page and bibliography
+        latex-auto-install: false    # do not try to update/install texlive packages on compilation errors
+
+aspectratio: 169
+fontsize: 12pt
+linkcolor: mDarkTeal    # this color name is defined by the metropolis theme
+citecolor: airforceblue!110    # this color is defined in the header file
+
+biblio-style: apalike
+# bibliography: refdb.bib    # citation printed using after-body.tex file
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_knit$set(progress = TRUE, verbose = TRUE)
+```
+
+## {.plain}
+\titlepage
+
+## Outline {.plain}
+\tableofcontents
+
+# Sec 1
+
+## Slide 1
+See: \citet{R-base}.
+
+## Slide 2
+1. A
+2. B
+
+# Sec 2
+
+## Slide 3
+::: {what-i-write-here-does-not-seem-to-matter-as-long-as-something-is-written}
+### Block title
+\vspace{-0.5em}
+<!-- this negative vspace is required because quarto adds a phantomsection which adds a bit of unwanted space -->
+Block text
+:::
+Text outside block.
+
+## Slide 4
+a
+
+::: {whatever}
+## Slide 5
+b
+:::
+
+<!-- in order to put latex commands between to two frames, put previous frame in divs like above -->
+
+\section{Sec 3}
+
+## Slide 6
+c
+
+
+::: {whatever}
+## {.plain}
+```{=latex}
+\addtocounter{framenumber}{-1}
+\centering \Huge Thank you.
+```
+:::
+
+```{=latex}
+\appendix
+
+\begingroup
+    \renewcommand{\section}[2]{}
+    \begin{frame}[allowframebreaks]{References}
+		%\bibliographytrue
+        \def\bibfont{\footnotesize}
+		\bibliography{refdb.bib}
+    \end{frame}
+\endgroup
+```
+
+## Appendix slide 1
+x
+
+## Appendix slide 2
+y
